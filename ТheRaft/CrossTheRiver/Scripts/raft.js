@@ -5,15 +5,15 @@ var Raft = (function(){
 		this.position = data.position;
 		this.side = 'left';
 		this.seats = data.seats;
-		this.seatsTaken = {left: false, right: false};
-		this.seated = {left: null, right: null};
+		this.seatsTaken = {left: false, right : false};
+		this.seated =[];
 		this.image = imgList.getImage('raft');
 		this.inAnimation = false;
 		this.layer = layer;
 		this.animation = null;
 	}
 	
-	Raft.prototype.onClick = function() {
+	Raft.prototype.travel = function() {
 		if (this.inAnimation) {
 			return;
 		}
@@ -47,21 +47,47 @@ var Raft = (function(){
 		}
 	};
 	
-	Raft.prototype.takeASeat = function () {
-		if (!this.seatsTaken.left) {
-			return {
-				x: this.seats.seat1.position[this.side].x,
-				y: this.seats.seat1.position[this.side].y
+	Raft.prototype.unseat = function (c) {
+		var reseated = [];
+		if (this.seated.length > 0) {
+			if (c.seat !== 'none') {
+				this.seatsTaken[c.seat] = false;
 			}
-		} else if (!this.seatsTaken.right) {
-			
+			for (var i = 0, len = this.seated.length; i < len; i++) {
+				if (c.name !== this.seated[i].name) {
+					reseated.push(this.seated[i]);
+				}
+			}
+			this.seated = reseated;
+		}
+	}
+	
+	Raft.prototype.takeASeat = function (c) {
+		if (this.seated.length < 2) {
+			this.seated.push(c);
+			if (!this.seatsTaken.left) {
+				this.seatsTaken.left = true;
+				return {
+					x: this.seats.seat1.position[this.side].x,
+					y: this.seats.seat1.position[this.side].y,
+					seat: 'left'
+					
+				}
+			} else {
+				this.seatsTaken.right = true;
+				return {
+					x: this.seats.seat2.position[this.side].x,
+					y: this.seats.seat2.position[this.side].y,
+					seat: 'right'
+				}
+			}
 		} else {
 			throw 'All seats are taken. Make sure you check with raft.hasFreeSeats() for free seats first!';
 		}
 	};
  	
 	Raft.prototype.hasFreeSeats = function () {
-		return !(this.seatsTaken.left && this.seatsTaken.right);
+		return (this.seated.length < 2);
 	};
 	
 	Raft.prototype.init = function () {
@@ -72,7 +98,7 @@ var Raft = (function(){
 			image: this.image
 		});
 		this.player.on('click', function(){
-			self.onClick();
+			self.travel();
 		});
 		this.layer.add(this.player);
 		this.layer.batchDraw();

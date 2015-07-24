@@ -10,6 +10,7 @@ var Character = (function(){
 		this.name = data.name;
 		this.role = data.role;
 		this.side = 'left';
+		this.seat = null;
 		this.raft = raft;
 		this.image = imgList.getImage(this.name);
 		this.layer = layer;
@@ -36,18 +37,35 @@ var Character = (function(){
 				}
 			});
 			this.side = this.raft.side;
+			this.raft.unseat(this);
 			this.animation.play();
+			return;
 		}
 		if (!this.raft.hasFreeSeats()) {
 			//play disabled sound
 			return;
 		}
 		//first check if character and rift are on the same side
-		
-		//then check if moving the character will cause a collision in its side
-		
+		if (this.side !== this.raft.side) {
+			return;
+		}
 		//then get position for animation, assign true to the seat of the raft
 		//assing the opposite side for the character and start animation
+		console.log('going to raft, side: ' + this.raft.side);
+		var goto = this.raft.takeASeat(this);
+		this.side = 'raft';
+		this.seat = goto.seat;
+		this.inAnimation = true;
+		this.animation = new Kinetic.Tween({
+			node: this.player,
+			x: goto.x,
+			y: goto.y,
+			duration: 0.7,
+			onFinish: function() {
+				self.inAnimation = false;
+			}
+		});
+		this.animation.play();
 	};
 	
 	Character.prototype.init = function () {
