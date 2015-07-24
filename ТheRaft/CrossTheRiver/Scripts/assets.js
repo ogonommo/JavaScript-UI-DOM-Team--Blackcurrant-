@@ -79,24 +79,24 @@ var assets = (function(){
 			seat1 : {
 				position: {
 					left: {
-						x: 210,
-						y: 210, 
+						x: 400,
+						y: 400, 
 					},
 					right: {
-						x: 310,
-						y: 210
+						x: 420,
+						y: 400
 					}
 				}
 			},
 			seat2 : {
 				position: {
 					left: {
-						x: 230,
-						y: 230, 
+						x: 500,
+						y: 400 
 					},
 					right: {
-						x: 330,
-						y: 230
+						x: 520,
+						y: 400
 					}
 				}
 			}
@@ -110,8 +110,8 @@ var assets = (function(){
 			role: 'policeman',
 			position : {
 				left: {
-					x: 20,
-					y: 20,
+					x: 100,
+					y: 100,
 				},
 				right: {
 					x: 220,
@@ -124,8 +124,8 @@ var assets = (function(){
 			role: 'criminal',
 			position : {
 				left: {
-					x: 20,
-					y: 20,
+					x: 150,
+					y: 100,
 				},
 				right: {
 					x: 220,
@@ -138,8 +138,8 @@ var assets = (function(){
 			role: 'mother',
 			position : {
 				left: {
-					x: 20,
-					y: 20,
+					x: 40,
+					y: 180,
 				},
 				right: {
 					x: 220,
@@ -152,8 +152,8 @@ var assets = (function(){
 			role: 'father',
 			position : {
 				left: {
-					x: 20,
-					y: 20,
+					x: 40,
+					y: 260,
 				},
 				right: {
 					x: 220,
@@ -166,8 +166,8 @@ var assets = (function(){
 			role: 'boy',
 			position : {
 				left: {
-					x: 20,
-					y: 20,
+					x: 100,
+					y: 260,
 				},
 				right: {
 					x: 220,
@@ -180,8 +180,8 @@ var assets = (function(){
 			role: 'boy',
 			position : {
 				left: {
-					x: 20,
-					y: 20,
+					x: 160,
+					y: 260,
 				},
 				right: {
 					x: 220,
@@ -194,8 +194,8 @@ var assets = (function(){
 			role: 'girl',
 			position : {
 				left: {
-					x: 20,
-					y: 20,
+					x: 100,
+					y: 180,
 				},
 				right: {
 					x: 220,
@@ -208,8 +208,8 @@ var assets = (function(){
 			role: 'girl',
 			position : {
 				left: {
-					x: 20,
-					y: 20,
+					x: 160,
+					y: 180,
 				},
 				right: {
 					x: 220,

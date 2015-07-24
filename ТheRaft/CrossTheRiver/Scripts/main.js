@@ -74,7 +74,9 @@
         //Initializing characters
         for (var i = 0, len = assets.characters.length; i < len; i++) {
             characters.push(new Character(assets.characters[i], raft, images, gameLayer));
+            characters[i].init();
         }
+        console.log(characters);
         
     }
     

@@ -6,6 +6,7 @@ var Raft = (function(){
 		this.side = 'left';
 		this.seats = data.seats;
 		this.seatsTaken = {left: false, right: false};
+		this.seated = {left: null, right: null};
 		this.image = imgList.getImage('raft');
 		this.inAnimation = false;
 		this.layer = layer;
@@ -44,6 +45,23 @@ var Raft = (function(){
 			});
 			this.animation.play();
 		}
+	};
+	
+	Raft.prototype.takeASeat = function () {
+		if (!this.seatsTaken.left) {
+			return {
+				x: this.seats.seat1.position[this.side].x,
+				y: this.seats.seat1.position[this.side].y
+			}
+		} else if (!this.seatsTaken.right) {
+			
+		} else {
+			throw 'All seats are taken. Make sure you check with raft.hasFreeSeats() for free seats first!';
+		}
+	};
+ 	
+	Raft.prototype.hasFreeSeats = function () {
+		return !(this.seatsTaken.left && this.seatsTaken.right);
 	};
 	
 	Raft.prototype.init = function () {
