@@ -65,7 +65,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\main.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="img\boy1.png" />
+    <Content Include="img\boy2.png" />
+    <Content Include="img\criminal.png" />
+    <Content Include="img\father.png" />
+    <Content Include="img\girl1.png" />
+    <Content Include="img\girl2.png" />
+    <Content Include="img\mother.png" />
+    <Content Include="img\policeman.png" />
     <Content Include="index.html" />
+    <Content Include="Scripts\assets.js" />
+    <Content Include="Scripts\game.js" />
+    <Content Include="Scripts\kinetic-v5.1.0.js" />
+    <Content Include="Scripts\kinetic-v5.1.0.min.js" />
+    <Content Include="Scripts\imagelist.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Web.config" />
   </ItemGroup>
